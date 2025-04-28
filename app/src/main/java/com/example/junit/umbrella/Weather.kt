@@ -1,4 +1,4 @@
-package com.example.junit
+package com.example.junit.umbrella
 
 class Weather {
     fun isSunny(): Boolean {

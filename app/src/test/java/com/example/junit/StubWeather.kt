@@ -1,5 +1,8 @@
 package com.example.junit
-class StubWeather:IWeather {
+
+import com.example.junit.umbrella.IWeather
+
+class StubWeather: IWeather {
     var fakeisSunny = false
     override fun isSunny(): Boolean{
         return fakeisSunny
