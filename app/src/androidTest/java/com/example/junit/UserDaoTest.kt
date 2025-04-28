@@ -41,7 +41,7 @@ class UserDaoTest {
 
     @Test
     fun insert() = runBlocking {
-        val user = User(name = "Allen", email = "allen@gmail.com")
+        val user = User(name = "Matthew", email = "Matthew@gmail.com")
         userDao.insert(user)
         val users = userDao.getUsers()
         Assert.assertEquals(1, users.size)
@@ -56,8 +56,8 @@ class UserDaoTest {
 
     @Test
     fun insertUsers() = runBlocking {
-        val user1 = User(name = "Allen", email = "allen@gmail.com")
-        val user2 = User(name = "Bob", email = "bob@gmail.com")
+        val user1 = User(name = "Matthew", email = "Matthew@gmail.com")
+        val user2 = User(name = "Rob", email = "rob123@gmail.com")
         userDao.insertUsers(listOf(user1, user2))
         val users = userDao.getUsers()
         Assert.assertEquals(2, users.size)
@@ -67,16 +67,16 @@ class UserDaoTest {
 
     @Test
     fun update() = runBlocking {
-        val user1 = User(name = "Matthew", email = "allen@gmail.com")
+        val user1 = User(name = "Matthew", email = "w81221014177@gmail.com")
         userDao.insert(user1)
         val insertUser = userDao.getUsers().first()
-        val updateUser = User(id = insertUser.id, name = "David", email = "david@gmail.com")
+        val updateUser = User(id = insertUser.id, name = "Jack", email = "jack123@gmail.com")
         userDao.update(updateUser)
 
         val retrievedUser = userDao.getUserById(insertUser.id)
         Assert.assertNotNull(retrievedUser)
-        Assert.assertEquals("David", retrievedUser?.name)
-        Assert.assertEquals("david@gmail.com", retrievedUser?.email)
+        Assert.assertEquals("Jack", retrievedUser?.name)
+        Assert.assertEquals("jack123@gmail.com", retrievedUser?.email)
     }
 
 
