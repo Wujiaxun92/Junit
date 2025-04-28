@@ -20,4 +20,16 @@ class UserRepositoryMockkTest{
         val result = repository.fetchFirstUserName()
         Assert.assertEquals("First user:Matthew", result)
     }
+    @Test
+    fun `用戶不存在`() = runBlocking {
+        coEvery { userService.getUsers() }returns emptyList()
+        val result = repository.fetchFirstUserName()
+        Assert.assertEquals("NO users found", result)
+    }
+    @Test
+    fun `模擬網路錯誤`() = runBlocking {
+        coEvery { userService.getUsers() } throws Exception("Network error")
+        val result = repository.fetchFirstUserName()
+        Assert.assertEquals("Error: Network error", result)
+    }
 }
